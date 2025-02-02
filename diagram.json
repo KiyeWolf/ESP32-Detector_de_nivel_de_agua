@@ -1,0 +1,45 @@
+{
+  "version": 1,
+  "author": "Anonymous maker",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "board-esp32-devkit-c-v4",
+      "id": "esp",
+      "top": -57.6,
+      "left": 62.44,
+      "attrs": { "env": "micropython-20231227-v1.22.0" }
+    },
+    {
+      "type": "wokwi-hc-sr04",
+      "id": "ultrasonic1",
+      "top": -65.7,
+      "left": -196.1,
+      "attrs": { "distance": "213" }
+    },
+    { "type": "wokwi-servo", "id": "servo1", "top": 46, "left": 278.4, "attrs": {} },
+    {
+      "type": "wokwi-tm1637-7segment",
+      "id": "sevseg1",
+      "top": 220.76,
+      "left": -40.97,
+      "attrs": { "color": "red" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "ultrasonic1:GND", "esp:GND.1", "black", [ "v0" ] ],
+    [ "sevseg1:GND", "esp:GND.3", "black", [ "h57.6", "v-201.6" ] ],
+    [ "ultrasonic1:VCC", "esp:3V3", "red", [ "v9.6", "h144", "v-67.2" ] ],
+    [ "sevseg1:VCC", "esp:3V3", "red", [ "h19.2", "v-115.2", "h-134.4", "v-192" ] ],
+    [ "servo1:PWM", "esp:15", "green", [ "h0" ] ],
+    [ "ultrasonic1:ECHO", "esp:27", "green", [ "v57.6", "h95.2", "v-9.6" ] ],
+    [ "ultrasonic1:TRIG", "esp:26", "green", [ "v28.8", "h9.2" ] ],
+    [ "sevseg1:CLK", "esp:4", "green", [ "h48", "v-163.2" ] ],
+    [ "sevseg1:DIO", "esp:0", "green", [ "h76.8", "v-172.8" ] ],
+    [ "servo1:V+", "esp:5V", "green", [ "h-76.8", "v67.3", "h-134.4" ] ],
+    [ "servo1:GND", "esp:CMD", "black", [ "h-48", "v86.4", "h-182.4", "v-48" ] ]
+  ],
+  "dependencies": {}
+}
